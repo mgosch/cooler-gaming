@@ -61,9 +61,38 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .card {
+                background-color: RGB(250, 247, 245);
+                text-align: center;
+                display: inline-block;
+                width: 310px;
+                height: 380px;
+                vertical-align: top;
+                border-style: outset;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+
+            .card-img-top {
+                width: 300px;
+            }
+
+            .content {
+                height: 86%;
+                text-align: left;
+            }
+
+            .row {
+                height: 30%;
+                vertical-align: top;
+            }
+
         </style>
     </head>
     <body>
+
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -80,11 +109,18 @@
             @endif
 
             <div class="content">
+                <nav class="navbar navbar-light bg-light">
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" style="width: 700px;" type="search" placeholder="Buscar" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>
+               </nav>
+               
                 <div class="row">
                     <div class="col-sm-6">
                         @foreach($games as $item)
-                        <div class="card" style="width: 18rem;" >
-                            <img src="images/{{$item->image}}" class="card-img-top" alt="image" width="300px">
+                        <div class="card">
+                            <img src="images/{{$item->image}}" class="card-img-top" alt="image">
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->name}}</h5>
                                 <p class="card-text">{{$item->description}}</p>
