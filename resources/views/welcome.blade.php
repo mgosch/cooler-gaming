@@ -67,7 +67,7 @@
                 text-align: center;
                 display: inline-block;
                 width: 310px;
-                height: 380px;
+                height: 400px;
                 vertical-align: top;
                 border-style: outset;
                 border-bottom-left-radius: 20px;
@@ -81,11 +81,16 @@
             .content {
                 height: 86%;
                 text-align: left;
+                margin-left: 2%;
             }
 
             .row {
                 height: 30%;
                 vertical-align: top;
+            }
+
+            .link {
+                
             }
 
         </style>
@@ -115,7 +120,7 @@
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                </nav>
-               
+            <br>
                 <div class="row">
                     <div class="col-sm-6">
                         @foreach($games as $item)
@@ -124,6 +129,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$item->name}}</h5>
                                 <p class="card-text">{{$item->description}}</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
                             </div>
                         </div>
                         @endforeach()
