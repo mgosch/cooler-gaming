@@ -80,8 +80,18 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Cooler Gaming
+                <div class="row">
+                    <div class="col-sm-6">
+                        @foreach($games as $item)
+                        <div class="card" style="width: 18rem;" >
+                            <img src="images/{{$item->image}}" class="card-img-top" alt="image" width="300px">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$item->name}}</h5>
+                                <p class="card-text">{{$item->description}}</p>
+                            </div>
+                        </div>
+                        @endforeach()
+                    </div>
                 </div>
             </div>
         </div>
