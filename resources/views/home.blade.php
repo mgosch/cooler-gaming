@@ -1,28 +1,90 @@
 @extends('layouts.app')
 
 @section('content')
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+            .full-height {
+                height: 100vh;
+            }
 
-    <title>{{ config('app.name', 'Cooler Gaming') }}</title>
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+            .position-ref {
+                position: relative;
+            }
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+
+            .card {
+                background-color: RGB(250, 247, 245);
+                text-align: center;
+                display: inline-block;
+                width: 310px;
+                height: 400px;
+                vertical-align: top;
+                border-style: outset;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+
+            .card-img-top {
+                width: 300px;
+            }
+
+            .content {
+                height: 86%;
+                text-align: left;
+                margin-left: 2%;
+            }
+
+            .row {
+                height: 30%;
+                vertical-align: top;
+            }
+
+            .link {
+                
+            }
+
+        </style>
         <div class="container">
         <nav class="navbar navbar-light bg-light">
                             <form class="form-inline">
@@ -54,6 +116,5 @@
                             </div>
                         </div>
         </div>
-        </body>
-</html>
+
 @endsection

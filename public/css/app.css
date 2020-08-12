@@ -655,8 +655,6 @@ pre code {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
-  height: 30%;
-  vertical-align: top;
 }
 
 .no-gutters {
@@ -1025,7 +1023,6 @@ pre code {
   .col-sm-6 {
     flex: 0 0 50%;
     max-width: 50%;
-    display: contents;
   }
 
   .col-sm-7 {
@@ -4970,15 +4967,15 @@ input[type=button].btn-block {
 }
 
 .card {
-  background-color: RGB(250, 247, 245);
-  text-align: center;
-  display: inline-block;
-  width: 310px;
-  height: 400px;
-  vertical-align: top;
-  border-style: outset;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
 }
 
 .card > hr {
@@ -10929,35 +10926,5 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
-
-  .content{
-    height: 86%;
-    text-align: left;
-    margin-left: 2%;
-  }
-
-  .flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-  .position-ref {
-      position: relative;
-  }
-
-  .top-right {
-    position: absolute;
-    right: 10px;
-    top: 18px;
-  }
-
-  .m-b-md {
-    margin-bottom: 30px;
-  }
-
-  .card-img-top {
-    width: 300px;
-  } 
 }
 
