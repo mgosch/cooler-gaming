@@ -32,6 +32,7 @@
 
             .position-ref {
                 position: relative;
+                margin-top: 20px;
             }
 
             .top-right {
@@ -89,8 +90,9 @@
                 vertical-align: top;
             }
 
-            .link {
-                
+            .img-responsive {
+                display: block;
+                padding-left: 130px;
             }
 
         </style>
@@ -117,7 +119,7 @@
                 <div class="title m-b-md bg-blue-500">
                     Cooler Gaming
                 </div>
-                <img src="images/Logo.jpg" class="card-img-top" alt="image">  
+                <img src="images/Logo.jpg" class="img-responsive" alt="image">  
             </div>
         </div>
     </body>
