@@ -5,7 +5,7 @@
         <nav class="navbar navbar-light bg-light">
                             <form class="form-inline">
                                 <input class="form-control mr-sm-2" style="width: 700px;" type="search" name="name" placeholder="Buscar" aria-label="Search">
-                                <select name="genre" id="genre">
+                                <select name="genre" id="genre" style= "margin-right: 10px;">
                                     <option value="">Todos</option>
                                     <option value="Carrera">Carrera</option>
                                     <option value="Aventura">Aventura</option>
@@ -18,9 +18,9 @@
                     </nav>
                     <br>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-md-6 col-sm-6" style= "display: contents;">
                                 @foreach($games as $item)
-                                <div class="block-4 text-center">
+                                <div class="block-4 text-center" style= "width: 20rem; margin-right: 10px;">
                                     <img src="images/{{$item->image}}" class="card-img-top" alt="image">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$item->name}}</h5>
