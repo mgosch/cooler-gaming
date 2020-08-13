@@ -21,3 +21,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/alquilar/{id}', 'HomeController@alquilar')->name('alquilar');
+

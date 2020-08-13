@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App;
 
 class HomeController extends Controller
 {
@@ -30,8 +31,14 @@ class HomeController extends Controller
                                    ->join('genres', 'game_genres.genres_id' , 'genres.id')
                                    ->where('games.name', 'LIKE', '%'.$gameName.'%')
                                    ->where('genres.description', 'LIKE', $gameGenre)
-                                   ->get(['games.name', 'games.description', 'games.image', 'genres.description as genero']);
+                                   ->get(['games.id', 'games.name', 'games.description', 'games.image', 'genres.description as genero']);
         return view('home', compact('games'));
     }
+
+    public function alquilar($id)
+	{
+		$detalle = App\Game::findOrFail($id);
+		return view('alquilar', compact('detalle'));
+	}
 
 }
