@@ -37,8 +37,10 @@ class HomeController extends Controller
 
     public function alquilar($id)
 	{
-		$detalle = App\Game::findOrFail($id);
-		return view('alquilar', compact('detalle'));
-	}
+        $detalle = App\Game::findOrFail($id);
+        $comments = DB::table('comments')->where('comments.game_id', $id)
+                                         ->get();
+		return view('alquilar', compact('detalle', 'comments'));
+    }
 
 }

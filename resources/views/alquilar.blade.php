@@ -26,4 +26,28 @@
           </div>
         </div>
       </div>
+      <div class="site-section block-3 site-blocks-2 bg-light">
+        <div class="container">
+          <div class="row justify-content-left">
+            <div class="col-md-7 site-section-heading text-center pt-4">
+              <h2>Comentarios</h2>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="nonloop-block-3 owl-carousel">
+                @foreach($comments as $comment)
+                <div class='item text-white bg-secondary mb-3'>
+                  <div class="block-4" style= "width: 20rem; margin-right: 10px;">
+                      <div class="card-body">
+                          <p class="card-text">{{$comment->comment}}</p>
+                      </div>
+                  </div>
+                </div>
+                @endforeach()
+              </div>
+            </div>
+          </div>
+      </div>
 @endsection
