@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+<link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
+<link rel="stylesheet" href="<?php echo asset('css/alquiler.css')?>" type="text/css"> 
+
       <div class="container">
         <div class="row">
           <div class="col-md-6">
@@ -34,13 +38,13 @@
             </div>
           </div>
           <br>
-          <div class="row">
+          <div class="contenedor_comentarios">
             <div class="col-md-12">
               <div class="nonloop-block-3 owl-carousel">
                 @foreach($comments as $comment)
                 <div class='item text-white bg-secondary mb-3'>
                   <div class="block-4" style= "width: 20rem; margin-right: 10px;">
-                      <div class="card-body">
+                      <div class="comentario_box">
                           <p class="card-text">{{$comment->comment}}</p>
                       </div>
                   </div>
@@ -48,6 +52,6 @@
                 @endforeach()
               </div>
             </div>
-          </div>
+          </div><br>
       </div>
 @endsection
