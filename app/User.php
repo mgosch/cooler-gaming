@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getCar()
+    {
+        // verifica si hay un carro del usuario
+        $possibleCar = Car::where('user_id', $this->id)->first();
+        if ($possibleCar) {
+            return $possibleCar;
+        } else {
+            //si no crea uno nuevo
+            $newCar = new Car();
+            $newCar->user_id = $this->id;
+            $newCar->save();
+            return $newCar;
+        }
+    }
 }

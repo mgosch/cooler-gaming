@@ -1,54 +1,66 @@
 @extends('layouts.app')
 
 @section('content')
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-          <img src="images/{{$detalle->image}}" class="card-img-top" alt="image">
-          </div>
-          <div class="col-md-6">
-            <h2 class="text-black">{{$detalle->name}}</h2>
-            <p>{{$detalle->description}}</p>
-            <p><strong class="text-primary h4">$ {{$detalle->amount}}</strong></p>
-            <p><a href="" class="btn btn-success" data-toggle="modal" data-target="#myModal"
-                       data-id="{{$detalle->id}}" data-name="{{$detalle->name}}" data-price="{{$detalle->amount}}">Agregar al carrito</a></p>
-           </div>
-          </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Carrito</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /.row -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          @if(\App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first())
+          <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+              <tr>
+              <th>Nombre</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+              @php $car = \App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first() @endphp
+              @foreach($car->getProducts() as $item)
+                <tr class="odd gradeX">
+                <td>{{$item->game->name}}</td>
+                  <td>{{$item->quantity}}</td>
+                  <td>{{$item->game->amount}}</td>
+                  <td>{{$item->game->amount * $item->quantity}}</td>
+                </tr>
+              @endforeach
+
+            <tr>
+              <td></td>
+              <td></td>
+              <td>Total:</td>
+              <td>$ {{$car->getTotal()}}</td>
+            </tr>
+            </tbody>
+          </table>
+            <a href="{{url('shop')}}" class="btn btn-success">Alquilar</a>
+          @else
+            <i>Ningun producto agregado</i>
+          @endif
         </div>
+        <!-- /.panel-body -->
       </div>
-      <div class="site-section block-3 site-blocks-2 bg-light">
-        <div class="container">
-          <div class="row justify-content-left">
-            <div class="col-md-7 site-section-heading text-center pt-4">
-              <h2>Comentarios</h2>
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="nonloop-block-3 owl-carousel">
-                @foreach($comments as $comment)
-                <div class='item text-white bg-secondary mb-3'>
-                  <div class="block-4" style= "width: 20rem; margin-right: 10px;">
-                      <div class="card-body">
-                          <p class="card-text">{{$comment->comment}}</p>
-                      </div>
-                  </div>
-                </div>
-                @endforeach()
-              </div>
-            </div>
-          </div>
-      </div>
-      </div>
+      <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form role="form" action="{{url('add-to-car')}}" method="POST">
       @csrf
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel" style="position:absolute;">Agregar juego</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Agregar juego</h4>
           </div>
           <div class="modal-body">
             <input class="form-control" id="game-id" name="id" type="hidden">
@@ -61,7 +73,7 @@
               <input class="form-control" id="game-price" readonly>
             </div>
             <div class="form-group">
-              <label>Horas</label>
+              <label>Cantidad</label>
               <input class="form-control" value="1" type="number" min="1" step="1" name="quantity">
             </div>
 

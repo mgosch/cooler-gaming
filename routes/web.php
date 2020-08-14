@@ -13,13 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-     return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/alquilar/{id}', 'HomeController@alquilar')->name('alquilar');
 
+
+Route::middleware(['auth'])->group(function () {
+     Route::get('/', function () {
+         return view('welcome');
+     });
+ 
+     Route::get('/alquilar/{id}', 'HomeController@alquilar')->name('alquilar');
+ 
+     Route::get('/car', function () {
+         return view('car');
+     });
+ 
+     Route::get('/shop', function () {
+         $car = \Illuminate\Support\Facades\Auth::user()->getCar();
+         $car->clear();
+         return redirect('home')->with(['message' => 'Compra exitosa']);
+     });
+ 
+     Route::post('/add-to-car', 'CarController@addToCar');
+ });
