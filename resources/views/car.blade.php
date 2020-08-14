@@ -1,20 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="row">
+<link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
+<link rel="stylesheet" href="<?php echo asset('css/car.css')?>" type="text/css">
+  <div class="container">
     <div class="col-lg-12">
       <h1 class="page-header">Carrito</h1>
     </div>
     <!-- /.col-lg-12 -->
   </div>
   <!-- /.row -->
-  <div class="row">
+  <div class="container">
     <div class="col-lg-12">
       <div class="panel panel-default">
         <!-- /.panel-heading -->
         <div class="panel-body">
           @if(\App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first())
-          <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
               <tr>
               <th>Nombre</th>
