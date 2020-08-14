@@ -49,11 +49,37 @@
                                 </li>
                             @endif
                         @else
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-shopping-cart fa-fw"></i> <i class="fa fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-messages">
+                                @if(\App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first())
+                                    @foreach(\App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first()->getProducts() as $item)
+                                    <li>
+                                    <div>
+                                        <strong>{{$item->game->name}}</strong>
+                                        <span class="pull-right text-muted">
+                                         <em>{{$item->game->amount}} c/u</em>
+                                        </span>
+                                        </div>
+                                        <div>Horas: {{$item->quantity}}</div>
+                                    </li>
+                                    @endforeach
+                                @endif
+                                <li>
+                                    <a class="text-center" href="{{url('car')}}">
+                                    <strong>Ver carrito</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                                </ul>
+                                <!-- /.dropdown-messages -->
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
