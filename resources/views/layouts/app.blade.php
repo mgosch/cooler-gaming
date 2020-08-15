@@ -50,7 +50,7 @@
                             @endif
                         @else
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <img src="/svg/cart.svg" class="icon_carrito" data-toggle="dropdown">
                                 <i class="fa fa-shopping-cart fa-fw"></i> <i class="fa fa-caret-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-messages">
@@ -60,7 +60,7 @@
                                     <div>
                                         <strong>{{$item->game->name}}</strong>
                                         <span class="pull-right text-muted">
-                                         <em>{{$item->game->amount}} c/u</em>
+                                         <em>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100)}} c/u</em>
                                         </span>
                                         </div>
                                         <div>Horas: {{$item->quantity}}</div>
@@ -68,7 +68,7 @@
                                     @endforeach
                                 @endif
                                 <li>
-                                    <a class="text-center" href="{{url('car')}}">
+                                    <a class="text-center carrito_display" href="{{url('car')}}">
                                     <strong>Ver carrito</strong>
                                     <i class="fa fa-angle-right"></i>
                                     </a>

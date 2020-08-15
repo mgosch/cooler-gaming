@@ -8,14 +8,15 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-          <img src="images/{{$detalle->image}}" class="card-img-top" alt="image">
+          <img src="../images/{{$detalle->image}}" class="card-img-top" alt="image">
           </div>
           <div class="col-md-6">
             <h2 class="text-black">{{$detalle->name}}</h2>
             <p>{{$detalle->description}}</p>
-            <p><strong class="text-primary h4">$ {{$detalle->amount}}</strong></p>
+            <p><strong>Premio: </strong> {{$detalle->reward_cooler_coins}} cooler coins</p>
+            <p><strong class="text-primary h4">$ {{ $price_rent }}</strong></p>
             <p><a href="" class="btn btn-success" data-toggle="modal" data-target="#myModal"
-                       data-id="{{$detalle->id}}" data-name="{{$detalle->name}}" data-price="{{$detalle->amount}}">Agregar al carrito</a></p>
+                       data-id="{{$detalle->id}}" data-name="{{$detalle->name}}" data-price="{{$price_rent}}">Agregar al carrito</a></p>
            </div>
           </div>
         </div>

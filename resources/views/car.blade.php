@@ -20,7 +20,7 @@
             <thead>
               <tr>
               <th>Nombre</th>
-              <th>Cantidad</th>
+              <th>Horas</th>
               <th>Precio</th>
               <th>Total</th>
             </tr>
@@ -31,8 +31,8 @@
                 <tr class="odd gradeX">
                 <td>{{$item->game->name}}</td>
                   <td>{{$item->quantity}}</td>
-                  <td>{{$item->game->amount}}</td>
-                  <td>{{$item->game->amount * $item->quantity}}</td>
+                  <td>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100)}}</td>
+                  <td>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100) * $item->quantity}}</td>
                 </tr>
               @endforeach
 

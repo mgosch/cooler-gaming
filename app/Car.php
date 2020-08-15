@@ -29,7 +29,7 @@ class Car extends Model
     public function getTotal()
     {
         return $this->getProducts()->reduce(function ($carry, $item) {
-            return $carry + ($item->quantity * $item->game->amount);
+            return $carry + ($item->quantity * ((int)($item->game->amount * $item->game->percentaje_rent) / 100));
         }, 0);
     }
 }

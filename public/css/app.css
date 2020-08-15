@@ -10928,3 +10928,12 @@ a.text-dark:focus {
   }
 }
 
+.icon_carrito {
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.carrito_display {
+  display: block;
+}
+

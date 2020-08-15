@@ -40,7 +40,8 @@ class HomeController extends Controller
         $detalle = App\Game::findOrFail($id);
         $comments = DB::table('comments')->where('comments.game_id', $id)
                                          ->get();
-		return view('alquilar', compact('detalle', 'comments'));
+        $price_rent = ((int)($detalle->amount * $detalle->percentaje_rent) / 100);
+		return view('alquilar', compact('detalle', 'comments', 'price_rent'));
     }
 
 }
