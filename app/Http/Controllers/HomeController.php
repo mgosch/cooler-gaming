@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App;
+use App\Comment;
 
 class HomeController extends Controller
 {
@@ -42,6 +43,16 @@ class HomeController extends Controller
                                          ->get();
         $price_rent = ((int)($detalle->amount * $detalle->percentaje_rent) / 100);
 		return view('alquilar', compact('detalle', 'comments', 'price_rent'));
+    }
+
+    public function addComments(Request $request)
+    {
+        $newComment = new Comment;
+        $newComment->game_id = $request['id'];
+        $newComment->comment = $request['comment'];
+        $newComment->save();
+
+        return redirect(route('alquilar', $request['id']))->with(['message' => 'Se agregó el comentario']);
     }
 
 }

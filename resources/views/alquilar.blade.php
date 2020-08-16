@@ -24,8 +24,10 @@
       <div class="site-section block-3 site-blocks-2 bg-light">
         <div class="container">
           <div class="row justify-content-left">
-            <div class="col-md-7 site-section-heading text-center pt-4">
+            <div class="col-md-7 site-section-heading text-center pt-4" style="display: inline-flex;">
               <h2>Comentarios</h2>
+              <p><a href="" class="btn btn-success" data-toggle="modal" data-target="#myComment" data-id="{{$detalle->id}}" style="right: 0;
+    position: absolute;">Agregar comentario</a></p>
             </div>
           </div>
           <br>
@@ -82,7 +84,32 @@
     </form>
     <!-- /.modal-dialog -->
   </div>
-
+  <div class="modal fade" id="myComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form role="form" action="{{url('add-comment')}}" method="POST">
+      @csrf
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel" style="position:absolute;">Agregar comentario</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+          <input class="form-control" id="game-id" name="id" type="hidden">
+            <div class="form-group">
+              <label>Comentario</label>
+              <input class="form-control" name="comment">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+    </form>
+    <!-- /.modal-dialog -->
+  </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(function () {
@@ -94,6 +121,15 @@
         $(e.currentTarget).find('#game-id').val(id);
         $(e.currentTarget).find('#game-name').val(name);
         $(e.currentTarget).find('#game-price').val(price);
+      });
+    })
+  </script>
+    <script>
+    $(function () {
+      $('#myComment').on('show.bs.modal', function (e) {
+        var id = $(e.relatedTarget).data('id');
+
+        $(e.currentTarget).find('#game-id').val(id);
       });
     })
   </script>

@@ -37,4 +37,6 @@ Route::middleware(['auth'])->group(function () {
      });
  
      Route::post('/add-to-car', 'CarController@addToCar');
+
+     Route::post('/add-comment', 'HomeController@addComments');
  });
