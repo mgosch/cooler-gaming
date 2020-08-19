@@ -5,6 +5,15 @@
 <link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
 <link rel="stylesheet" href="<?php echo asset('css/alquiler.css')?>" type="text/css"> 
 
+@if ( session()->has('message') )
+    <div class="alert alert-success">   
+        <button type="button" 
+            class="close" 
+            data-dismiss="alert" 
+            aria-hidden="true">&times;</button>
+        {!! session()->get('message') !!} 
+    </div>
+@endif
       <div class="container">
         <div class="row">
           <div class="col-md-6">
