@@ -3,6 +3,17 @@
 @section('content')
 <link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
 <link rel="stylesheet" href="<?php echo asset('css/car.css')?>" type="text/css">
+
+@if ( session()->has('message') )
+    <div class="alert alert-success"> 
+        <button type="button" 
+            class="close" 
+            data-dismiss="alert" 
+            aria-hidden="true">&times;</button>
+        {!! session()->get('message') !!} 
+    </div>
+@endif
+
   <div class="container">
     <div class="col-lg-12">
       <h1 class="page-header">Carrito</h1>
@@ -15,7 +26,7 @@
       <div class="panel panel-default">
         <!-- /.panel-heading -->
         <div class="panel-body">
-          @if(\App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first())
+          @if((\App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first()->getProducts())->first())
           <table class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
               <tr>
