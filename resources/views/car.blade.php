@@ -23,21 +23,20 @@
               <th>Horas</th>
               <th>Precio</th>
               <th>Total</th>
-              <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
               @php $car = \App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first() @endphp
               @foreach($car->getProducts() as $item)
                 <tr class="odd gradeX">
-                <td>{{$item->game->name}}</td>
+                  <td>{{$item->game->name}}</td>
                   <td>{{$item->quantity}}</td>
                   <td>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100)}}</td>
                   <td>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100) * $item->quantity}}</td>
-                  <td>
+                  <td class="no-borders">
                     <a href="{{url('delete-to-car', [$item->game->id, $item->quantity])}}">
-                      <img type="submit" src="/svg/delete.svg" class="icon_delete">
-                    </a>
+                        <img type="submit" src="/svg/delete.svg" class="icon_delete">
+                      </a>
                   </td>
                 </tr>
               @endforeach
@@ -47,11 +46,11 @@
               <td></td>
               <td>Total:</td>
               <td>$ {{$car->getTotal()}}</td>
-              <td></td>
             </tr>
             </tbody>
           </table>
             <a href="{{url('shop')}}" class="btn btn-success">Alquilar</a>
+            <a href="{{url('home')}}" class="btn btn-success">Cancelar</a>
           @else
             <i>Ningun producto agregado</i>
           @endif

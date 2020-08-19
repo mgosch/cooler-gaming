@@ -9,3 +9,8 @@
 .btn{
   margin-left: 10px;
 }
+
+.panel-body table td.no-borders{
+  border: 1px solid white;
+  background-color: white;
+}
