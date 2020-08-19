@@ -38,5 +38,7 @@ Route::middleware(['auth'])->group(function () {
  
      Route::post('/add-to-car', 'CarController@addToCar');
 
+     Route::get('/delete-to-car/{game}/{quantity}', 'CarController@deleteToCar');
+
      Route::post('/add-comment', 'HomeController@addComments');
  });

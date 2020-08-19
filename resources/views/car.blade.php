@@ -23,6 +23,7 @@
               <th>Horas</th>
               <th>Precio</th>
               <th>Total</th>
+              <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -33,6 +34,11 @@
                   <td>{{$item->quantity}}</td>
                   <td>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100)}}</td>
                   <td>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100) * $item->quantity}}</td>
+                  <td>
+                    <a href="{{url('delete-to-car', [$item->game->id, $item->quantity])}}">
+                      <img type="submit" src="/svg/delete.svg" class="icon_delete">
+                    </a>
+                  </td>
                 </tr>
               @endforeach
 
@@ -41,6 +47,7 @@
               <td></td>
               <td>Total:</td>
               <td>$ {{$car->getTotal()}}</td>
+              <td></td>
             </tr>
             </tbody>
           </table>
@@ -55,55 +62,4 @@
     </div>
     <!-- /.col-lg-12 -->
   </div>
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form role="form" action="{{url('add-to-car')}}" method="POST">
-      @csrf
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Agregar juego</h4>
-          </div>
-          <div class="modal-body">
-            <input class="form-control" id="game-id" name="id" type="hidden">
-            <div class="form-group">
-              <label>Nombre</label>
-              <input class="form-control" id="game-name" readonly>
-            </div>
-            <div class="form-group">
-              <label>Precio</label>
-              <input class="form-control" id="game-price" readonly>
-            </div>
-            <div class="form-group">
-              <label>Cantidad</label>
-              <input class="form-control" value="1" type="number" min="1" step="1" name="quantity">
-            </div>
-
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Agregar</button>
-          </div>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-    </form>
-    <!-- /.modal-dialog -->
-  </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
-    $(function () {
-      $('#myModal').on('show.bs.modal', function (e) {
-        var id = $(e.relatedTarget).data('id');
-        var name = $(e.relatedTarget).data('name');
-        var price = $(e.relatedTarget).data('price');
-
-        $(e.currentTarget).find('#game-id').val(id);
-        $(e.currentTarget).find('#game-name').val(name);
-        $(e.currentTarget).find('#game-price').val(price);
-      });
-    })
-  </script>
 @endsection

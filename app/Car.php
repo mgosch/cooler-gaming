@@ -32,4 +32,12 @@ class Car extends Model
             return $carry + ($item->quantity * ((int)($item->game->amount * $item->game->percentaje_rent) / 100));
         }, 0);
     }
+
+    public function deleteProduct($game, $quantity)
+    {
+        CarGame::where('car_id', $this->id)
+                ->where('game_id', $game)
+                ->where('quantity', $quantity)
+                ->delete();
+    }
 }

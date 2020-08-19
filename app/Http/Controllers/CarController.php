@@ -20,4 +20,10 @@ class CarController extends Controller
 
         return redirect('home')->with(['message' => 'Se agregó el producto al carrito']);
     }
+
+    public function deleteToCar($game, $quantity) {
+        $car = Auth::user()->getCar();
+        $car->deleteProduct($game, $quantity);
+        return redirect('car')->with(['message' => 'Se elimino el producto del carrito']);
+    }
 }
