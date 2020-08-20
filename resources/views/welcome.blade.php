@@ -124,3 +124,5 @@
         </div>
     </body>
 </html>
+
+@include('layouts.footer')
