@@ -8,98 +8,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-                margin-top: 20px;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-
-            .card {
-                background-color: RGB(250, 247, 245);
-                text-align: center;
-                display: inline-block;
-                width: 310px;
-                height: 400px;
-                vertical-align: top;
-                border-style: outset;
-                border-bottom-left-radius: 20px;
-                border-bottom-right-radius: 20px;
-            }
-
-            .card-img-top {
-                width: 300px;
-            }
-
-            .content {
-                height: 86%;
-                text-align: left;
-                margin-left: 2%;
-            }
-
-            .row {
-                height: 30%;
-                vertical-align: top;
-            }
-
-            .img-responsive {
-                display: block;
-                padding-left: 130px;
-            }
-
-        </style>
+        <link rel="stylesheet" href="<?php echo asset('css/welcome.css')?>" type="text/css"> 
     </head>
     <body>
-
-
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -122,5 +33,17 @@
                 <img src="images/Logo.jpg" class="img-responsive" alt="image">  
             </div>
         </div>
+        <footer>
+            <p class="foot-rights">
+                2020 Cooler Gaming. Todos los derechos reservados. Todas las marcas registradas pertenecen a sus respectivos dueños en Argentina y otros países. Todos los precios incluyen IVA (donde sea aplicable). 
+            </p>
+            <p class="foot-rights">
+                <a href="https://www.google.com/">Política de Privacidad </a> | <a href="https://www.google.com/"> Información legal </a> | <a href="https://www.google.com/"> Acuerdo de Suscriptor a Steam </a> | <a href="https://www.google.com/"> Reembolsos </a>
+            </p>
+            <hr>
+            <p class="foot-rights">
+                <a href="https://www.google.com/">Acerca de Cooler Gaming </a> | <a href="https://www.google.com/"> Empleo </a> | <a href="https://www.google.com/"> Cooler Coins </a> | <img src="images\facebook.png"><a href="https://www.facebook.com/TeamCoolerGaming/"> CoolerGaming </a> | <img src="images\twitter.png"><a href="https://twitter.com/CoolerEsport"> CoolerGaming </a>
+            </p>
+        </footer>
     </body>
 </html>
