@@ -19,6 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/privacy', function () {
+    return view('privacidad');
+});
+
+Route::get('/acuerdo', function () {
+    return view('acuerdo');
+});
+
+Route::get('/legal', function () {
+    return view('legal');
+});
+
 
 Route::middleware(['auth'])->group(function () {
  
