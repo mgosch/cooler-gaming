@@ -47,3 +47,5 @@
         </footer>
     </body>
 </html>
+
+@include('layouts.footer')

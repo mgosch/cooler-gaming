@@ -72,4 +72,6 @@
     </div>
     <!-- /.col-lg-12 -->
   </div>
+
+@include('layouts.footer')
 @endsection
