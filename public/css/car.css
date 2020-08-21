@@ -11,13 +11,10 @@
 }
 
 .panel-body table td.no-borders{
-  border: 1px solid white;
-  background-color: white;
+  border: 1px solid RGB(248,250,252);
+  background-color: RGB(248,250,252);
 }
 
-.full-page{
-  min-height: 82%;
-  height: 82%;
-  max-height: 82%;
-  background-color: red;
+.wrapper{
+  min-height: 40rem !important;
 }

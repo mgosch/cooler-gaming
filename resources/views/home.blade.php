@@ -3,6 +3,7 @@
 @section('content')
 
 <link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css"> 
+<link rel="stylesheet" href="<?php echo asset('css/footer.css')?>" type="text/css"> 
 
 @if ( session()->has('message') )
     <div class="alert alert-success"> 
@@ -49,6 +50,6 @@
                 @endforeach()
             </div>
         </div>
-        </div>
-@include('layouts.footer')
+    </div>
+    @include('layouts.footer')
 @endsection

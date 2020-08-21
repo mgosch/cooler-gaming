@@ -1,5 +1,6 @@
-<link rel="stylesheet" href="<?php echo asset('css/welcome.css')?>" type="text/css"> 
-<footer>
+<link rel="stylesheet" href="<?php echo asset('css/footer.css')?>" type="text/css"> 
+
+<footer class="footer">
     <p class="foot-rights">
         2020 Cooler Gaming. Todos los derechos reservados. Todas las marcas registradas pertenecen a sus respectivos dueños en Argentina y otros países. Todos los precios incluyen IVA (donde sea aplicable). 
     </p>

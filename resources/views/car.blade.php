@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
+
 <link rel="stylesheet" href="<?php echo asset('css/car.css')?>" type="text/css">
+<link rel="stylesheet" href="<?php echo asset('css/footer.css')?>" type="text/css">
+
 
 @if ( session()->has('message') )
     <div class="alert alert-success"> 
@@ -13,8 +15,7 @@
         {!! session()->get('message') !!} 
     </div>
 @endif
-
-<div class="full-page">
+<div class="wrapper">
   <div class="container">
     <div class="col-lg-12">
       <h1 class="page-header">Carrito</h1>
@@ -73,6 +74,7 @@
     </div>
     <!-- /.col-lg-12 -->
   </div>
+  <div class="push"></div>
 </div>
 @include('layouts.footer')
 @endsection
