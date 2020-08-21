@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
 
-<div id="legal_box">
+<div id="legal_box" class="newsColumn">
 			<h2>Derechos de autor</h2> © 2020 Valve Corporation. Todos los derechos reservados. Valve, el logotipo de Valve, Half-Life, el logotipo de Half-Life, el logotipo de Lambda, Cooler Gaming, el logotipo de Cooler Gaming, Team Fortress, el logotipo de Team Fortress, Opposing Force, Day of Defeat, el logotipo de Day of Defeat, Counter-Strike, el logotipo de Counter-Strike, Source, el logotipo de Source, Counter-Strike: Condition Zero, Portal, el logotipo de Portal, Dota, el logotipo de Dota&nbsp;2 y Defense of the Ancients son marcas comerciales o marcas registradas de Valve Corporation. Todas las demás marcas comerciales son propiedad de sus respectivos propietarios.<br> <br>
         	<h2>Política de Valve sobre vídeos</h2>
             <a href="https://store.coolergaming.com/video_policy">Pulse aquí para obtener más información</a>.<br> <br>

@@ -28,4 +28,10 @@ html, body {
 }
 .footer, .push {
   height: 20px !important; /* .push must be the same height as .footer */
+  max-width: 1300px;
+  margin: 0 auto;
 }
+ .newsColumn {
+  max-width: 860px;
+  margin: 0 auto;
+ }

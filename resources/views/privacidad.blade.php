@@ -4,7 +4,8 @@
 
 <link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
 
-<div id="newsColumn">
+<div id="newsColumn" class="newsColumn">
+		<h2>Politica de privacidad</h2>
 		Valve respeta la privacidad de sus visitantes en línea y de los clientes de sus productos y servicios, y cumple con las leyes aplicables para la protección de su privacidad, entre las que se incluyen el Reglamento general de protección de datos de la Unión Europea ("RGPD") y los marcos Escudo de Privacidad de la UE y Suiza. <br>
 		<br>
 
@@ -14,7 +15,7 @@
 		Cuando hablemos de Datos personales a continuación, nos referiremos a cualquier información que pueda identificarlo a usted como individuo ("Información de identificación personal") o que pueda relacionarse con usted de manera indirecta mediante su vinculación con la Información de identificación personal. Valve también procesa datos anónimos, colectivos o no, con el fin de analizar y elaborar estadísticas relacionadas con los hábitos, patrones de uso y datos demográficos de los clientes en grupo o de forma individual. Dichos datos anónimos no permiten la identificación de los clientes a los que se refieren. Valve puede compartir datos anónimos, agregados o no, con terceros.<br>
 		<br>
 		
-		Otros términos en mayúscula de esta Política de confidencialidad tendrán el significado definido en el <a href="https://store.coolergaming.com/subscriber_agreement/">Acuerdo de suscriptor a Cooler Gaming</a> ("SSA"). <br>
+		Otros términos en mayúscula de esta Política de confidencialidad tendrán el significado definido en el <a href="{{url('acuerdo')}}">Acuerdo de suscriptor a Cooler Gaming</a> ("SSA"). <br>
 		<br>
 
 		<b>2. Por qué Valve recopila y procesa datos</b><br>

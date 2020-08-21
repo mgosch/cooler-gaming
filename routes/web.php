@@ -27,6 +27,10 @@ Route::get('/acuerdo', function () {
     return view('acuerdo');
 });
 
+Route::get('/reembolso', function () {
+    return view('reembolso');
+});
+
 Route::get('/legal', function () {
     return view('legal');
 });

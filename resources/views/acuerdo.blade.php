@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
 
-<div id="ssa_body">
+<div id="ssa_body" class="newsColumn">
 	<h3>ACUERDO DE SUSCRIPTOR A Cooler Gaming®</h3><br>
 	<p><a name="0"></a>Índice:
 		</p><ol style="margin-left: 13px;">
