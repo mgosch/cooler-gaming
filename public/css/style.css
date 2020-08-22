@@ -796,3 +796,48 @@ a {
 .container{
   max-height: 100%;
 }
+
+.about_area{
+  min-height: 600px;
+  padding-bottom: 100px;
+  display: inline-flex;
+}
+
+.about_area_inner_wrapper {
+  max-width: 940px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.about_header{
+  max-width: 500px;
+  padding-top: 120px;
+  float: left;
+  padding-bottom: 0;
+}
+
+.about_games_hero {
+    min-width: 600px;
+    width: 100%;
+    min-height: 800px;
+    left: 0;
+    top: 0;
+}
+
+.cta_title {
+  font-size: 45px;
+  margin-bottom: 10px;
+  line-height: 1;
+  text-align: center;
+}
+
+.cta_text{
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: 300;
+  text-align: center;
+}
+
+.cta_content{
+  max-width: 500px;
+  margin-top: 90px;
+}

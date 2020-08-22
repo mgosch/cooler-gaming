@@ -35,6 +35,9 @@ Route::get('/legal', function () {
     return view('legal');
 });
 
+Route::get('/acerca', function () {
+    return view('acerca');
+});
 
 Route::middleware(['auth'])->group(function () {
  
