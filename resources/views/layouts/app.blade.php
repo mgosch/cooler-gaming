@@ -40,7 +40,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <li class="nav-item">
+                        <li class="nav-item" style="margin-right: 20px;">
                                 <a class="nav-link" href="{{url('acerca')}}">{{ __('Acerca de') }}</a>
                         </li>
                         @guest
