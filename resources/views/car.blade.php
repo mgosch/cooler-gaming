@@ -62,7 +62,7 @@
             </tr>
             </tbody>
           </table>
-            <a href="{{url('shop')}}" class="btn btn-success">Alquilar</a>
+            <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalPago" data-total="{{((int)($item->game->amount * $item->game->percentaje_rent) / 100) * $item->quantity}}">Alquilar</a>
             <a href="{{url('home')}}" class="btn btn-success">Cancelar</a>
           @else
             <i>Ningun producto agregado</i>
@@ -76,5 +76,48 @@
   </div>
   <div class="push"></div>
 </div>
+<div class="modal fade" id="modalPago" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form role="form" action="{{url('shop')}}">
+      @csrf
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel" style="position:absolute;">Pagar</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+          <input class="form-control" id="game-id" name="id" type="hidden">
+            <div class="form-group">
+              <label>Número tarjeta de credito</label>
+              <input class="form-control" name="tc" type="number">
+            </div>
+            <div class="form-group">
+              <label>Nombre y Apellido</label>
+              <input class="form-control" name="name">
+            </div>
+            <div class="form-group">
+              <label>Importe a pagar</label>
+              <input class="form-control" id="car-total" readonly>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-success">Pagar</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+    </form>
+    <!-- /.modal-dialog -->
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $('#modalPago').on('show.bs.modal', function (e) {
+        var total = $(e.relatedTarget).data('total');
+        $(e.currentTarget).find('#car-total').val(total);
+      });
+    })
+  </script>
 @include('layouts.footer')
 @endsection

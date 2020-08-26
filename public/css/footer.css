@@ -27,6 +27,7 @@ html, body {
   margin: 0 auto -20px !important; /* the bottom margin is the negative value of the footer's height */
 }
 .footer, .push {
+  font-size: 12px;
   height: 20px !important; /* .push must be the same height as .footer */
   max-width: 1300px;
   margin: 0 auto;

@@ -14,7 +14,8 @@
                     <div class="cta_text">
                         Con casi 30 000 juegos publicados; desde grandes compañías hasta estudios independientes pasando por todo lo intermedio. Lo novedoso de esta plataforma es que te permitirá probarlos sin tener que incurrir en el pago total del software.  Disfruta de ofertas exclusivas, actualizaciones automáticas y otras grandes ventajas.				</div>
                     <div class="cta_btn">
-				</div>
+                        <a href="{{ url('/home') }}">Explorar la tienda</a>
+			      </div>
 			</div>
                 </div>
             </div>

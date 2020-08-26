@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
 
 <div id="newsColumn" class="newsColumn">
-		<h2>Politica de privacidad</h2>
+		<h2>Política de privacidad</h2>
 		Valve respeta la privacidad de sus visitantes en línea y de los clientes de sus productos y servicios, y cumple con las leyes aplicables para la protección de su privacidad, entre las que se incluyen el Reglamento general de protección de datos de la Unión Europea ("RGPD") y los marcos Escudo de Privacidad de la UE y Suiza. <br>
 		<br>
 

@@ -841,3 +841,9 @@ a {
   max-width: 500px;
   margin-top: 90px;
 }
+
+.cta_btn{
+  margin-top: 30px;
+  font-size: 20px;
+  text-align: center;
+}

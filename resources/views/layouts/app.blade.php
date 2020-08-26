@@ -41,7 +41,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item" style="margin-right: 20px;">
-                                <a class="nav-link" href="{{url('acerca')}}">{{ __('Acerca de') }}</a>
+                                <a class="nav-link" href="{{url('acerca')}}">{{ __('Nosotros') }}</a>
                         </li>
                         @guest
                             <li class="nav-item">
