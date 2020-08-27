@@ -48,7 +48,7 @@
                   <td>{{$item->quantity}}</td>
                   <td>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100)}}</td>
                   <td>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100) * $item->quantity}}</td>
-                  <td>{{$item->game->reward_cooler_coins * $item->quantity}}</td>
+                  <td>{{number_format($item->game->reward_cooler_coins * $item->quantity, 2)}}</td>
                   <td class="no-borders">
                     <a href="{{url('delete-to-car', [$item->game->id, $item->quantity])}}">
                         <img type="submit" src="/svg/delete.svg" class="icon_delete">
@@ -62,11 +62,11 @@
               <td></td>
               <td>Total:</td>
               <td>$ {{$car->getTotal()}}</td>
-              <td>{{$car->getTotalCoins()}} cooler coins</td>
+              <td>{{number_format($car->getTotalCoins(), 2)}} cooler coins</td>
             </tr>
             </tbody>
           </table>
-            <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalPago" data-coins="{{$coins}}" data-total="{{$car->getTotal()}}">Alquilar</a>
+            <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalPago" data-coins="{{$coins}}" data-total="{{$car->getTotal()}}" data-rewars="{{$car->getTotalCoins()}}">Alquilar</a>
             <a href="{{url('home')}}" class="btn btn-success">Cancelar</a>
           @else
             <i>Ningun producto agregado</i>
@@ -93,10 +93,6 @@
             <div class="col-sm-6">
             <input class="form-control" id="game-id" name="id" type="hidden">
               <div class="form-group">
-                <label>Número tarjeta de credito</label>
-                <input class="form-control" name="tc" type="number">
-              </div>
-              <div class="form-group">
                 <label>Importe total</label>
                 <input class="form-control" id="car-total" readonly>
               </div>
@@ -104,16 +100,24 @@
                 <label>Total a pagar</label>
                 <input class="form-control" id="dif" readonly>
               </div>
+              <div class="form-group">
+                <label>Número tarjeta de credito</label>
+                <input class="form-control" name="tc" type="number">
+              </div>
           </div>
           <div class="col-sm-6">
             <input class="form-control" id="game-id" name="id" type="hidden">
               <div class="form-group">
-                <label>Nombre y Apellido</label>
-                <input class="form-control" name="name">
+                <label>Cooler coins descontadas</label>
+                <input class="form-control" id="coins-total" readonly>
               </div>
               <div class="form-group">
                 <label>Cooler coins disponibles</label>
-                <input class="form-control" id="coins-total" readonly>
+                <input class="form-control" id="new-coins" readonly>
+              </div>
+              <div class="form-group">
+                <label>Nombre y Apellido</label>
+                <input class="form-control" name="name">
               </div>
           </div>
           </div>
@@ -133,16 +137,20 @@
       $('#modalPago').on('show.bs.modal', function (e) {
         var total = $(e.relatedTarget).data('total');
         var coins = $(e.relatedTarget).data('coins');
+        var newCoins = $(e.relatedTarget).data('rewars');
         var dif;
-        if(total - coins > 0) {
+        if(total - coins >= 0) {
           dif = total - coins;
         } else {
           dif = 0;
+          newCoins = newCoins + (-1 * (total - coins));
+          coins = total;
         }
 
         $(e.currentTarget).find('#car-total').val(total);
         $(e.currentTarget).find('#coins-total').val(coins);
         $(e.currentTarget).find('#dif').val(dif);
+        $(e.currentTarget).find('#new-coins').val(newCoins);
       });
     })
   </script>
