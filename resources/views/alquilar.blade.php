@@ -25,7 +25,7 @@
             <p><strong>Premio: </strong> {{$detalle->reward_cooler_coins}} cooler coins</p>
             <p><strong class="text-primary h4">$ {{ $price_rent }}</strong></p>
             <p><a href="" class="btn btn-success" data-toggle="modal" data-target="#myModal"
-                       data-id="{{$detalle->id}}" data-name="{{$detalle->name}}" data-price="{{$price_rent}}">Agregar al carrito</a></p>
+                       data-id="{{$detalle->id}}" data-name="{{$detalle->name}}" data-cooler="{{$detalle->reward_cooler_coins}}" data-price="{{$price_rent}}">Agregar al carrito</a></p>
            </div>
           </div>
         </div>
@@ -77,6 +77,10 @@
               <input class="form-control" id="game-price" readonly>
             </div>
             <div class="form-group">
+              <label>Cooler Coins</label>
+              <input class="form-control" id="game-cooler" readonly>
+            </div>
+            <div class="form-group">
               <label>Horas</label>
               <input class="form-control" value="1" type="number" min="1" step="1" name="quantity">
             </div>
@@ -125,10 +129,12 @@
       $('#myModal').on('show.bs.modal', function (e) {
         var id = $(e.relatedTarget).data('id');
         var name = $(e.relatedTarget).data('name');
+        var cooler = $(e.relatedTarget).data('cooler');
         var price = $(e.relatedTarget).data('price');
 
         $(e.currentTarget).find('#game-id').val(id);
         $(e.currentTarget).find('#game-name').val(name);
+        $(e.currentTarget).find('#game-cooler').val(cooler);
         $(e.currentTarget).find('#game-price').val(price);
       });
     })

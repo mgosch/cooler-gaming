@@ -33,6 +33,13 @@ class Car extends Model
         }, 0);
     }
 
+    public function getTotalCoins()
+    {
+        return $this->getProducts()->reduce(function ($carry, $item) {
+            return $carry + ($item->quantity * $item->game->reward_cooler_coins);
+        }, 0);
+    }
+
     public function deleteProduct($game, $quantity)
     {
         CarGame::where('car_id', $this->id)

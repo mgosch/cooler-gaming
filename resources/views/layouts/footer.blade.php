@@ -9,6 +9,6 @@
     </p>
     <hr>
     <p class="foot-rights">
-        <a href="https://www.valvesoftware.com/es/about">Acerca de Valve </a> | <a href="https://www.google.com/"> Cooler Coins </a> | <img src="images\facebook.png"><a href="https://www.facebook.com/TeamCoolerGaming/"> CoolerGaming </a> | <img src="images\twitter.png"><a href="https://twitter.com/CoolerEsport"> CoolerGaming </a>
+        <a href="https://www.valvesoftware.com/es/about">Acerca de Valve </a> | <a href="https://www.google.com/"> Cooler Coins </a> | <img src="../images/facebook.png"><a href="https://www.facebook.com/TeamCoolerGaming/"> CoolerGaming </a> | <img src="../images/twitter.png"><a href="https://twitter.com/CoolerEsport"> CoolerGaming </a>
     </p>
 </footer>
