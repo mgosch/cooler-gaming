@@ -22,10 +22,10 @@
           <div class="col-md-6">
             <h2 class="text-black">{{$detalle->name}}</h2>
             <p>{{$detalle->description}}</p>
-            <p><strong>Premio: </strong> {{$detalle->reward_cooler_coins}} cooler coins</p>
-            <p><strong class="text-primary h4">$ {{ $price_rent }}</strong></p>
+            <p><strong>Premio: </strong> {{number_format($detalle->reward_cooler_coins,2, ',' , '.')}} cooler coins</p>
+            <p><strong class="text-primary h4">$ {{ number_format($price_rent, 2, ',' , '.') }}</strong></p>
             <p><a href="" class="btn btn-success" data-toggle="modal" data-target="#myModal"
-                       data-id="{{$detalle->id}}" data-name="{{$detalle->name}}" data-cooler="{{$detalle->reward_cooler_coins}}" data-price="{{$price_rent}}">Agregar al carrito</a></p>
+                       data-id="{{$detalle->id}}" data-name="{{$detalle->name}}" data-cooler="{{number_format($detalle->reward_cooler_coins,2, ',' , '.')}}" data-price="{{number_format($price_rent,2, ',' , '.')}}">Agregar al carrito</a></p>
            </div>
           </div>
         </div>

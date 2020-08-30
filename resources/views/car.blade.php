@@ -46,9 +46,9 @@
                 <tr class="odd gradeX">
                   <td>{{$item->game->name}}</td>
                   <td>{{$item->quantity}}</td>
-                  <td>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100)}}</td>
-                  <td>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100) * $item->quantity}}</td>
-                  <td>{{number_format($item->game->reward_cooler_coins * $item->quantity, 2)}}</td>
+                  <td>$ {{number_format(($item->game->amount * $item->game->percentaje_rent) / 100, 2, ',' , '.')}}</td>
+                  <td>$ {{number_format(($item->game->amount * $item->game->percentaje_rent) / 100 * $item->quantity, 2, ',' , '.')}}</td>
+                  <td>{{number_format($item->game->reward_cooler_coins * $item->quantity, 2, ',' , '.')}}</td>
                   <td class="no-borders">
                     <a href="{{url('delete-to-car', [$item->game->id, $item->quantity])}}">
                         <img type="submit" src="/svg/delete.svg" class="icon_delete">
@@ -61,12 +61,13 @@
               <td></td>
               <td></td>
               <td>Total:</td>
-              <td>$ {{$car->getTotal()}}</td>
-              <td>{{number_format($car->getTotalCoins(), 2)}} cooler coins</td>
+              <td>$ {{number_format($car->getTotal(),2, ',' , '.')}}</td>
+              <td>{{number_format($car->getTotalCoins(), 2, ',' , '.')}} cooler coins</td>
             </tr>
             </tbody>
           </table>
-            <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalPago" data-coins="{{$coins}}" data-total="{{$car->getTotal()}}" data-rewars="{{$car->getTotalCoins()}}">Alquilar</a>
+            <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalPago" data-coins="{{number_format($coins,2, ',' , '.')}}" data-total="{{number_format($car->getTotal(),2, ',' , '.')}}" data-rewars="{{number_format($car->getTotalCoins(),2, ',' , '.')}}"
+            data-diferencia="{{number_format($car->getDif(),2, ',' , '.')}}">Alquilar</a>
             <a href="{{url('home')}}" class="btn btn-success">Cancelar</a>
           @else
             <i>Ningun producto agregado</i>
@@ -98,7 +99,7 @@
               </div>
               <div class="form-group">
                 <label>Total a pagar</label>
-                <input class="form-control" id="dif" readonly>
+                <input class="form-control" id="dif" name="dif" readonly>
               </div>
               <div class="form-group">
                 <label>Número tarjeta de credito</label>
@@ -138,12 +139,10 @@
         var total = $(e.relatedTarget).data('total');
         var coins = $(e.relatedTarget).data('coins');
         var newCoins = $(e.relatedTarget).data('rewars');
-        var dif;
-        if(total - coins >= 0) {
-          dif = total - coins;
-        } else {
+        var dif = $(e.relatedTarget).data('diferencia');
+        if(dif < 0) {
           dif = 0;
-          newCoins = newCoins + (-1 * (total - coins));
+          newCoins = newCoins + (-1 * dif);
           coins = total;
         }
 

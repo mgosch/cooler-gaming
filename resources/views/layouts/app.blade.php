@@ -64,7 +64,7 @@
                                     <div>
                                         <strong>{{$item->game->name}}</strong>
                                         <span class="pull-right text-muted">
-                                         <em>{{((int)($item->game->amount * $item->game->percentaje_rent) / 100)}} c/u</em>
+                                         <em>{{number_format(($item->game->amount * $item->game->percentaje_rent) / 100, 2, ',' , '.')}} c/u</em>
                                         </span>
                                         </div>
                                         <div>Horas: {{$item->quantity}}</div>
