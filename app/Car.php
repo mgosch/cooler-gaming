@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Car extends Model
 {
@@ -36,14 +37,25 @@ class Car extends Model
     public function getTotalCoins()
     {
         return $this->getProducts()->reduce(function ($carry, $item) {
-            return $carry + ($item->quantity * $item->game->reward_cooler_coins);
+                return $carry + ($item->quantity * $item->game->reward_cooler_coins);
+        }, 0);
+    }
+
+    public function getNewCoins()
+    {
+        return $this->getProducts()->reduce(function ($carry, $item) {
+            if ($this->getDif() < 0) {
+                return $carry + (($item->quantity * $item->game->reward_cooler_coins) + (-1 * $this->getDif()));
+            } else {
+                return $carry + ($item->quantity * $item->game->reward_cooler_coins);
+            }
         }, 0);
     }
 
     public function getDif()
     {
         return $this->getProducts()->reduce(function ($carry, $item) {
-            return $carry + (($item->quantity * ($item->game->amount * $item->game->percentaje_rent / 100))-($item->quantity * $item->game->reward_cooler_coins));
+            return $carry + (($item->quantity * ($item->game->amount * $item->game->percentaje_rent / 100))-(Auth::user()->total_cooler_coins));
         }, 0);
     }
 

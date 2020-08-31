@@ -66,7 +66,7 @@
             </tr>
             </tbody>
           </table>
-            <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalPago" data-coins="{{number_format($coins,2, ',' , '.')}}" data-total="{{number_format($car->getTotal(),2, ',' , '.')}}" data-rewars="{{number_format($car->getTotalCoins(),2, ',' , '.')}}"
+            <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalPago" data-coins="{{number_format($coins,2, ',' , '.')}}" data-total="{{number_format($car->getTotal(),2, ',' , '.')}}" data-rewars="{{number_format($car->getNewCoins(),2, ',' , '.')}}"
             data-diferencia="{{number_format($car->getDif(),2, ',' , '.')}}">Alquilar</a>
             <a href="{{url('home')}}" class="btn btn-success">Cancelar</a>
           @else
@@ -101,10 +101,12 @@
                 <label>Total a pagar</label>
                 <input class="form-control" id="dif" name="dif" readonly>
               </div>
+              @if($car->getDif()>0)
               <div class="form-group">
                 <label>Número tarjeta de credito</label>
                 <input class="form-control" name="tc" type="number">
               </div>
+              @endif
           </div>
           <div class="col-sm-6">
             <input class="form-control" id="game-id" name="id" type="hidden">
@@ -116,10 +118,12 @@
                 <label>Cooler coins disponibles</label>
                 <input class="form-control" id="new-coins" readonly>
               </div>
+              @if($car->getDif()>0)
               <div class="form-group">
                 <label>Nombre y Apellido</label>
                 <input class="form-control" name="name">
               </div>
+              @endif
           </div>
           </div>
           <div class="modal-footer">
@@ -140,9 +144,8 @@
         var coins = $(e.relatedTarget).data('coins');
         var newCoins = $(e.relatedTarget).data('rewars');
         var dif = $(e.relatedTarget).data('diferencia');
-        if(dif < 0) {
-          dif = 0;
-          newCoins = newCoins + (-1 * dif);
+        if(dif < '0') {
+          dif = '0,00';
           coins = total;
         }
 
