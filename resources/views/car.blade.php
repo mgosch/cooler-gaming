@@ -17,69 +17,70 @@
 @endif
 <div class="wrapper">
   <div class="container">
-    <div class="col-lg-12">
-      <h1 class="page-header">Carrito</h1>
-    </div>
-    <!-- /.col-lg-12 -->
-  </div>
-  <!-- /.row -->
-  <div class="container">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-          @if((\App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first()->getProducts())->first())
-          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-            <thead>
-              <tr>
-              <th>Nombre</th>
-              <th>Horas</th>
-              <th>Precio</th>
-              <th>Total</th>
-              <th>Cooler Coins</th>
-            </tr>
-            </thead>
-            <tbody>
-              @php $car = \App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first() @endphp
-              @php $coins = \Illuminate\Support\Facades\Auth::user()->total_cooler_coins @endphp
-              @foreach($car->getProducts() as $item)
-                <tr class="odd gradeX">
-                  <td>{{$item->game->name}}</td>
-                  <td>{{$item->quantity}}</td>
-                  <td>$ {{number_format(($item->game->amount * $item->game->percentaje_rent) / 100, 2, ',' , '.')}}</td>
-                  <td>$ {{number_format(($item->game->amount * $item->game->percentaje_rent) / 100 * $item->quantity, 2, ',' , '.')}}</td>
-                  <td>{{number_format($item->game->reward_cooler_coins * $item->quantity, 2, ',' , '.')}}</td>
-                  <td class="no-borders">
-                    <a href="{{url('delete-to-car', [$item->game->id, $item->quantity])}}">
-                        <img type="submit" src="/svg/delete.svg" class="icon_delete">
-                      </a>
-                  </td>
-                </tr>
-              @endforeach
-
-            <tr>
-              <td></td>
-              <td></td>
-              <td>Total:</td>
-              <td>$ {{number_format($car->getTotal(),2, ',' , '.')}}</td>
-              <td>{{number_format($car->getTotalCoins(), 2, ',' , '.')}} cooler coins</td>
-            </tr>
-            </tbody>
-          </table>
-            <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalPago" data-coins="{{number_format($coins,2, ',' , '.')}}" data-total="{{number_format($car->getTotal(),2, ',' , '.')}}" data-rewars="{{number_format($car->getNewCoins(),2, ',' , '.')}}"
-            data-diferencia="{{number_format($car->getDif(),2, ',' , '.')}}">Alquilar</a>
-            <a href="{{url('home')}}" class="btn btn-success">Cancelar</a>
-          @else
-            <i>Ningun producto agregado</i>
-          @endif
-        </div>
-        <!-- /.panel-body -->
+      <div class="col-lg-12">
+        <h1 class="page-header">Carrito</h1>
       </div>
-      <!-- /.panel -->
+      <!-- /.col-lg-12 -->
     </div>
-    <!-- /.col-lg-12 -->
+    <!-- /.row -->
+    <div class="container">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <!-- /.panel-heading -->
+          <div class="panel-body">
+            @if((\App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first()->getProducts())->first())
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+              <thead>
+                <tr>
+                <th>Nombre</th>
+                <th>Horas</th>
+                <th>Precio</th>
+                <th>Total</th>
+                <th>Cooler Coins</th>
+              </tr>
+              </thead>
+              <tbody>
+                @php $car = \App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first() @endphp
+                @php $coins = \Illuminate\Support\Facades\Auth::user()->total_cooler_coins @endphp
+                @foreach($car->getProducts() as $item)
+                  <tr class="odd gradeX">
+                    <td>{{$item->game->name}}</td>
+                    <td>{{$item->quantity}}</td>
+                    <td>$ {{number_format(($item->game->amount * $item->game->percentaje_rent) / 100, 2, ',' , '.')}}</td>
+                    <td>$ {{number_format(($item->game->amount * $item->game->percentaje_rent) / 100 * $item->quantity, 2, ',' , '.')}}</td>
+                    <td>{{number_format($item->game->reward_cooler_coins * $item->quantity, 2, ',' , '.')}}</td>
+                    <td class="no-borders">
+                      <a href="{{url('delete-to-car', [$item->game->id, $item->quantity])}}">
+                          <img type="submit" src="/svg/delete.svg" class="icon_delete">
+                        </a>
+                    </td>
+                  </tr>
+                @endforeach
+
+              <tr>
+                <td></td>
+                <td></td>
+                <td>Total:</td>
+                <td>$ {{number_format($car->getTotal(),2, ',' , '.')}}</td>
+                <td>{{number_format($car->getTotalCoins(), 2, ',' , '.')}} cooler coins</td>
+              </tr>
+              </tbody>
+            </table>
+              <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalPago" data-coins="{{number_format($coins,2, ',' , '.')}}" data-total="{{number_format($car->getTotal(),2, ',' , '.')}}" data-rewars="{{number_format($car->getNewCoins(),2, ',' , '.')}}"
+              data-diferencia="{{number_format($car->getDif(),2, ',' , '.')}}">Alquilar</a>
+              <a href="{{url('home')}}" class="btn btn-success">Cancelar</a>
+            @else
+              <i>Ningun producto agregado</i>
+            @endif
+          </div>
+          <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <div class="push"></div>
   </div>
-  <div class="push"></div>
 </div>
 <div class="modal fade" id="modalPago" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form role="form" action="{{url('shop')}}">
