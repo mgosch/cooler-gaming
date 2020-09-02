@@ -82,6 +82,7 @@
     <div class="push"></div>
   </div>
 </div>
+@if((\App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first()->getProducts())->first())
 <div class="modal fade" id="modalPago" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form role="form" action="{{url('shop')}}">
       @csrf
@@ -137,6 +138,7 @@
     </form>
     <!-- /.modal-dialog -->
 </div>
+@endif
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(function () {
