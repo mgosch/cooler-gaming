@@ -49,11 +49,7 @@ Route::middleware(['auth'])->group(function () {
          return view('car');
      });
  
-     Route::get('/shop', function () {
-         $car = \Illuminate\Support\Facades\Auth::user()->getCar();
-         $car->clear();
-         return redirect('home')->with(['message' => 'Compra exitosa']);
-     });
+     Route::get('/shop', 'CarController@shop');
  
      Route::post('/add-to-car', 'CarController@addToCar');
 

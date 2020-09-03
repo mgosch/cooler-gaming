@@ -66,4 +66,18 @@ class Car extends Model
                 ->where('quantity', $quantity)
                 ->delete();
     }
+
+    public function shop() {
+        
+        $carsGame = CarGame::where('car_id', $this->id)->get();
+
+        foreach ($carsGame as $carGame) {
+            $newItem = new Rental();
+            $newItem->game_id = $carGame->game_id;
+            $newItem->user_id = $this->user_id;
+            $newItem->time_rent = $carGame->quantity;
+            $newItem->save();
+        }
+
+    }
 }
