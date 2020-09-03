@@ -55,7 +55,6 @@
                         @else
                             <li class="dropdown">
                                 <img src="/svg/cart.svg" class="icon_carrito" data-toggle="dropdown">
-                                <i class="fa fa-shopping-cart fa-fw"></i> <i class="fa fa-caret-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-messages">
                                 @if(\App\Car::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->first())
