@@ -107,7 +107,7 @@
               @if($car->getDif()>0)
               <div class="form-group">
                 <label for="ccn">Número tarjeta de credito</label>
-                <input class="form-control" name="tc" id="ccn">
+                <input class="form-control" name="tc" id="ccn" required>
               </div>
               <div class="holder">
                 <i class="fab fa-cc-visa"></i>  
@@ -116,7 +116,7 @@
               </div>
               <div class="form-group">
                 <label>CCV</label>
-                <input class="form-control" name="ccv" id="ccv">
+                <input class="form-control" name="ccv" id="ccv" required>
               </div>
               @endif
           </div>
@@ -133,13 +133,13 @@
               @if($car->getDif()>0)
               <div class="form-group">
                 <label>Nombre y Apellido</label>
-                <input class="form-control" name="name" id="name">
+                <input class="form-control" name="name" id="name" required>
               </div>
               <div class="holder">
               </div>
               <div class="form-group">
                 <label>Expiración</label>
-                <input class="form-control" name="ccv" id="expiry" placeholder="01/20">
+                <input class="form-control" name="ccv" id="expiry" placeholder="01/20" required>
               </div>
               @endif
           </div>
