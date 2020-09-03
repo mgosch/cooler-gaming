@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="<?php echo asset('css/footer.css')?>" type="text/css">
 
 
+
 @if ( session()->has('message') )
     <div class="alert alert-success"> 
         <button type="button" 
@@ -105,8 +106,17 @@
               </div>
               @if($car->getDif()>0)
               <div class="form-group">
-                <label>Número tarjeta de credito</label>
-                <input class="form-control" name="tc" type="number">
+                <label for="ccn">Número tarjeta de credito</label>
+                <input class="form-control" name="tc" id="ccn">
+              </div>
+              <div class="holder">
+                <i class="fab fa-cc-visa"></i>  
+                <i class="fab fa-cc-mastercard"></i>  
+                <i class="fab fa-cc-amex"></i>  
+              </div>
+              <div class="form-group">
+                <label>CCV</label>
+                <input class="form-control" name="ccv" id="ccv">
               </div>
               @endif
           </div>
@@ -123,7 +133,13 @@
               @if($car->getDif()>0)
               <div class="form-group">
                 <label>Nombre y Apellido</label>
-                <input class="form-control" name="name">
+                <input class="form-control" name="name" id="name">
+              </div>
+              <div class="holder">
+              </div>
+              <div class="form-group">
+                <label>Expiración</label>
+                <input class="form-control" name="ccv" id="expiry" placeholder="01/20">
               </div>
               @endif
           </div>
@@ -139,6 +155,9 @@
     <!-- /.modal-dialog -->
 </div>
 @endif
+<script src="js/cleave.js"></script>
+<script src="js/main.js"></script>
+<script src="https://kit.fontawesome.com/6acea12e46.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(function () {

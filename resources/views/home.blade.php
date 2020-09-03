@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css"> 
 <link rel="stylesheet" href="<?php echo asset('css/footer.css')?>" type="text/css"> 
 
+
+
 @if ( session()->has('message') )
     <div class="alert alert-success"> 
         <button type="button" 
@@ -43,7 +45,7 @@
                         <p class="card-text">{{$item->description}}</p>
                     </div>
                     <div class="card-body-bottom">
-                            <a href="{{route('alquilar', $item->id)}}" class="btn btn-primary">Alquilar</a>
+                            <a href="{{route('alquilar', $item->id)}}" class="btn btn-success">Alquilar</a>
                     </div>
                     
                 </div>

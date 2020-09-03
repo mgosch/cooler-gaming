@@ -18,3 +18,16 @@
 .wrapper{
   min-height: 40rem !important;
 }
+
+.fab{
+  font-size: 25px;
+  background-color: white;
+}
+
+.active{
+  transform: scale(2);
+}
+
+.holder{
+  min-height: 50px;
+}
