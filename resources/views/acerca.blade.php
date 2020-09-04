@@ -2,11 +2,13 @@
 
 @section('content')
 
-<link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css"> 
+<link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css">
+<link rel="stylesheet" href="css/acerca.css" type="text/css">
+<script src="https://kit.fontawesome.com/6acea12e46.js" crossorigin="anonymous"></script>
 
-<div class="container">
+<div class="container" id="container1">
     <div id="about_header_area" class="about_area">
-        <div class="about_area_inner_wrapper">
+    <div class="about_area_inner_wrapper">
             <div id="about_games_hero" class="about_games_hero">
                 <div class="cta_content">
                     <h2 class="cta_title">
@@ -15,6 +17,8 @@
                         Con casi 30 000 juegos publicados; desde grandes compañías hasta estudios independientes pasando por todo lo intermedio. Lo novedoso de esta plataforma es que te permitirá probarlos sin tener que incurrir en el pago total del software.  Disfruta de ofertas exclusivas, actualizaciones automáticas y otras grandes ventajas.				</div>
                     <div class="cta_btn">
                         <a href="{{ url('/home') }}">Explorar la tienda</a>
+                        <br>
+                        <button class="btn btn-success"><a href="https://www.google.com/" class="descarga-app">Descargate la APP</a></button>
 			      </div>
 			</div>
                 </div>
@@ -26,7 +30,21 @@
                 </video>
                 <div id="about_monitor_video_gradient"></div>
             </div>
+            
         </div>
+
+    </div>
+
+</div>
+<div>
+    <h2 class="cta_title">
+        Qué novedades se vienen?
+    </h2>
+    <div class="content-wrapper">
+        <i class="far fa-comments"></i> Chat entre usuarios
     </div>
 </div>
+@include('layouts.footer')
+
+
 @endsection

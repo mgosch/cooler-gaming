@@ -89,7 +89,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Agregar</button>
+            <button type="submit" class="btn btn-success">Agregar</button>
           </div>
         </div>
         <!-- /.modal-content -->
@@ -115,7 +115,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Agregar</button>
+            <button type="submit" class="btn btn-success">Agregar</button>
           </div>
         </div>
         <!-- /.modal-content -->

@@ -37,6 +37,6 @@ class CarController extends Controller
         $user->save();
 
         $car->clear();
-        return redirect('home')->with(['message' => 'Compra exitosa']);
+        return redirect('home')->with(['message' => 'Compra exitosa. Descarga la app para empezar a jugar desde <a href="https://www.google.com/">acá.</a>']);
     }
 }
