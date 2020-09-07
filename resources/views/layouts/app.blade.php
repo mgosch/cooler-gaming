@@ -53,6 +53,11 @@
                                 </li>
                             @endif
                         @else
+                            @if((\Illuminate\Support\Facades\Auth::user()->type)==='admin')
+                            <li class="nav-item" style="margin-right: 20px;">
+                                    <a class="nav-link" href="{{url('abm')}}">{{ __('ABM') }}</a>
+                            </li>
+                            @endif
                             <li class="dropdown">
                                 <img src="/svg/cart.svg" class="icon_carrito" data-toggle="dropdown">
                                 </a>

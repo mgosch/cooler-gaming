@@ -55,4 +55,11 @@ class HomeController extends Controller
         return redirect(route('alquilar', $request['id']))->with(['message' => 'Se agregó el comentario']);
     }
 
+    public function getGames() {
+        $games = DB::table('games')->join('game_genres', 'games.id' , 'game_genres.game_id')
+        ->join('genres', 'game_genres.genres_id' , 'genres.id')
+        ->get(['games.id', 'games.name', 'games.description', 'games.image', 'genres.description as genero']);
+        return view('abm', compact('games'));
+    }
+
 }
