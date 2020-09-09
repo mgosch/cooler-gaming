@@ -41,9 +41,22 @@
         Qué novedades se vienen?
     </h2>
     <div class="content-wrapper">
-        <i class="far fa-comments"></i> Chat entre usuarios
+        <i class="far fa-comments" id="bubble"></i> Chat entre usuarios
+    </div>
+    <div class="content-wrapper">
+    <i class="fas fa-tv" id="tv"></i> Transmisión en directo
+    </div>
+    <div class="content-wrapper">
+    <i class="fas fa-mobile" id="mobile"></i> La APP para celulares
+    </div>
+    <div class="content-wrapper">
+    <i class="fas fa-language" id="language"></i> Nuevos idiomas añadidos constantemente
+    </div>
+    <div class="content-wrapper">
+    <i class="fas fa-credit-card" id="transaction"></i> Transacciones sencillas
     </div>
 </div>
+<br>
 @include('layouts.footer')
 
 

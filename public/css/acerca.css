@@ -7,15 +7,19 @@
 }
 
 .content-wrapper{
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 25%;
   border-style: outset;
   align-items: center;
   display: flex;
+  height: 50px;
+  width: 50%;
+  text-align: center;
 }
 
-.far{
+.fas, .far {
   font-size: 40px;
   margin-left: 5px;
   margin-right: 5px;
+  width: 50px;
+  text-align: center;
 }
