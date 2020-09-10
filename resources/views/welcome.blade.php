@@ -19,7 +19,7 @@
                         <a href="{{ url('/acerca') }}">Nosotros</a>
 
                         @auth
-                            <a href="{{ url('/home') }}">Home</a>
+                            <a href="{{ url('/home') }}">Tienda</a>
                         @else
 
                             <a href="{{ route('login') }}">Ingresar</a>

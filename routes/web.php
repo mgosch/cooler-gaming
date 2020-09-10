@@ -57,6 +57,12 @@ Route::middleware(['auth'])->group(function () {
 
      Route::post('/add-comment', 'HomeController@addComments');
 
+     Route::post('/add-game', 'HomeController@addGame');
+
      Route::get('/abm','HomeController@getGames');
+
+     Route::get('/reporte', function () {
+        return view('reporte');
+    });
      
  });

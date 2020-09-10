@@ -43,6 +43,9 @@
                         <li class="nav-item" style="margin-right: 20px;">
                                 <a class="nav-link" href="{{url('acerca')}}">{{ __('Nosotros') }}</a>
                         </li>
+                        <li class="nav-item" style="margin-right: 20px;">
+                            <a class="nav-link" href="{{ url('/home') }}">Tienda</a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
@@ -57,7 +60,10 @@
                             <li class="nav-item" style="margin-right: 20px;">
                                     <a class="nav-link" href="{{url('abm')}}">{{ __('ABM') }}</a>
                             </li>
-                            @endif
+                            <li class="nav-item" style="margin-right: 20px;">
+                                    <a class="nav-link" href="{{url('reporte')}}">{{ __('Reporte') }}</a>
+                            </li>
+                            @else
                             <li class="dropdown">
                                 <img src="/svg/cart.svg" class="icon_carrito" data-toggle="dropdown">
                                 </a>
@@ -84,6 +90,7 @@
                                 </ul>
                                 <!-- /.dropdown-messages -->
                             </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

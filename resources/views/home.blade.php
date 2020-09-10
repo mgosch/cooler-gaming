@@ -44,10 +44,11 @@
                         <h5 class="card-title">{{$item->name}}</h5>
                         <p class="card-text">{{$item->description}}</p>
                     </div>
+                    @if((\Illuminate\Support\Facades\Auth::user()->type)==='client')
                     <div class="card-body-bottom">
                             <a href="{{route('alquilar', $item->id)}}" class="btn btn-success">Alquilar</a>
                     </div>
-                    
+                    @endif
                 </div>
                 @endforeach()
             </div>
