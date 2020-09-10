@@ -66,6 +66,13 @@ class HomeController extends Controller
 
     public function addGame(Request $request)
     {
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $name = $file->getClientOriginalName();
+            $file->move(public_path() . '/images/' , $name);
+        }
+
         $newGame = new Game;
         $newGame->name = $request->input('name');
         $newGame->description = $request->input('description');
@@ -73,7 +80,7 @@ class HomeController extends Controller
         $newGame->percentaje_rent = $request->input('percentaje');
         $newGame->amount = $request->input('amount');
         $newGame->reward_cooler_coins = $request->input('rewards');
-        $newGame->image = $request->input('image');
+        $newGame->image = $request->file('image')->getClientOriginalName();
         $newGame->save();
 
         $genres = Genre::where('description', $request->input('genres'))->first();
@@ -88,7 +95,7 @@ class HomeController extends Controller
         ->join('genres', 'game_genres.genres_id' , 'genres.id')
         ->get(['games.id', 'games.name', 'games.description', 'games.image', 'genres.description as genero']);
 
-        return view('abm', compact('games'))->with(['message' => 'Se agregó el comentario']);
+        return view('abm', compact('games'))->with(['message' => 'Se agregó el juego']);
     }
 
 }

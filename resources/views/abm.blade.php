@@ -4,6 +4,15 @@
 
 <link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css">
 
+@if ( session()->has('message') )
+    <div class="alert alert-success"> 
+        <button type="button" 
+            class="close" 
+            data-dismiss="alert" 
+            aria-hidden="true">&times;</button>
+        {!! session()->get('message') !!} 
+    </div>
+@endif
 <div class="wrapper">
   <div class="container">
       <div class="col-lg-12">
@@ -54,7 +63,7 @@
   </div>
 </div>
 <div class="modal fade" id="newGame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form role="form" action="{{url('add-game')}}" method="POST">
+    <form role="form" action="{{url('add-game')}}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="modal-dialog">
         <div class="modal-content">
