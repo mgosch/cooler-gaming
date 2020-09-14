@@ -59,6 +59,8 @@ Route::middleware(['auth'])->group(function () {
 
      Route::post('/add-game', 'HomeController@addGame');
 
+     Route::get('/delete-game/{id}', 'HomeController@deleteGame');
+
      Route::get('/abm','HomeController@getGames');
 
      Route::get('/reporte', function () {

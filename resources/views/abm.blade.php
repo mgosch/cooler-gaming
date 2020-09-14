@@ -41,7 +41,7 @@
                     <td>{{$game->name}}</td>
                     <td>{{$game->description}}</td>
                     <td class="no-borders">
-                      <a href="">
+                        <a href="{{url('delete-game', [$game->id])}}">
                           <img type="submit" src="/svg/delete.svg" class="icon_delete">
                         </a>
                     </td>
