@@ -44,6 +44,11 @@
                         <a href="{{url('delete-game', [$game->id])}}">
                           <img type="submit" src="/svg/delete.svg" class="icon_delete">
                         </a>
+                        <a href="" data-toggle="modal" data-target="#editGame"  data-name="{{$game->name}}" data-description="{{$game->description}}"
+                        data-percentaje="{{$game->percentaje_rent}}" data-id="{{$game->id}}" data-amount="{{$game->amount}}" data-rewards="{{$game->reward_cooler_coins}}"
+                        data-genero="{{$game->genero}}" data-image="{{$game->image}}"> 
+                          <img type="submit" src="/svg/edit.svg" class="icon_delete">
+                        </a>
                     </td>
                   </tr>
                 @endforeach
@@ -62,6 +67,9 @@
     <div class="push"></div>
   </div>
 </div>
+
+@include('layouts.footer')
+
 <div class="modal fade" id="newGame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form role="form" action="{{url('add-game')}}" method="POST" enctype="multipart/form-data">
       @csrf
@@ -71,6 +79,7 @@
             <h4 class="modal-title" id="myModalLabel" style="position:absolute;">Alta de juego</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
+          <div class="modal-body">
           <div class="form-group">
             <label>Nombre</label>
             <input class="form-control" name="name" id="name" required>
@@ -109,6 +118,63 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             <button type="submit" class="btn btn-success">Alta</button>
           </div>
+         </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+    </form>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="editGame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form role="form" action="{{url('edit-game')}}" method="POST" enctype="multipart/form-data">
+      @csrf
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel" style="position:absolute;">Edición de juego</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+          <input class="form-control" id="id" name="id" type="hidden">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input class="form-control" name="name" id="name" required>
+          </div>
+          <div class="form-group">
+            <label>Descripción</label>
+            <input class="form-control" name="description" id="description" required>
+          </div>
+          <div class="form-group">
+            <label>Porcentaje de alquiler</label>
+            <input class="form-control" value="1" type="float" min="1" step="1" name="percentaje" id="percentaje" required>
+          </div>
+          <div class="form-group">
+            <label>Precio</label>
+            <input class="form-control" value="1" type="float" min="1" step="1" name="amount" id="amount" required>
+          </div>
+          <div class="form-group">
+            <label>Premio</label>
+            <input class="form-control" value="1" type="float" min="1" step="1" name="rewards" id="rewards" required>
+          </div>
+          <div class="form-group">
+            <label>Categoria</label>
+            <select name="genres" id="genres" required>
+                    <option value="Carrera">Carrera</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="Acción">Acción</option>
+                    <option value="Simulación">Simulación</option>
+                    <option value="Estrategia">Estrategia</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Imagen</label>
+            <input name="image" id="image" type="file">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-success">Modificar</button>
+          </div>
+         </div>
         </div>
         <!-- /.modal-content -->
       </div>
@@ -122,8 +188,27 @@
       });
     })
   </script>
+      <script>
+    $(function () {
+      $('#editGame').on('show.bs.modal', function (e) {
+        var name = $(e.relatedTarget).data('name');
+        var id = $(e.relatedTarget).data('id');
+        var description = $(e.relatedTarget).data('description');
+        var percentaje = $(e.relatedTarget).data('percentaje');
+        var amount = $(e.relatedTarget).data('amount');
+        var rewards = $(e.relatedTarget).data('rewards');
+        var genero = $(e.relatedTarget).data('genero');
 
-@include('layouts.footer')
+        $(e.currentTarget).find('#name').val(name);
+        $(e.currentTarget).find('#id').val(id);
+        $(e.currentTarget).find('#description').val(description);
+        $(e.currentTarget).find('#percentaje').val(percentaje);
+        $(e.currentTarget).find('#amount').val(amount);
+        $(e.currentTarget).find('#rewards').val(rewards);
+        $(e.currentTarget).find('#genres').val(genero);
+      });
+    })
+  </script>
 
 
 @endsection

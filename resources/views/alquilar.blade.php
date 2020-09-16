@@ -57,6 +57,9 @@
           </div><br>
       </div>
       </div>
+
+  @include('layouts.footer')
+
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form role="form" action="{{url('add-to-car')}}" method="POST">
       @csrf
@@ -148,5 +151,4 @@
       });
     })
   </script>
-@include('layouts.footer')
 @endsection

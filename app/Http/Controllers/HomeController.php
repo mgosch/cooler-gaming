@@ -8,6 +8,7 @@ use App\Game;
 use App\Comment;
 use App\Genre;
 use App\GameGenre;
+use App\Rental;
 
 class HomeController extends Controller
 {
@@ -63,7 +64,8 @@ class HomeController extends Controller
         $games = DB::table('games')->where('games.state', 'HABILITADO')
                                     ->join('game_genres', 'games.id' , 'game_genres.game_id')
                                     ->join('genres', 'game_genres.genres_id' , 'genres.id')
-                                    ->get(['games.id', 'games.name', 'games.description', 'games.image', 'genres.description as genero']);
+                                    ->select('games.*', 'genres.description as genero')
+                                    ->get();
         return view('abm', compact('games'));
     }
 
@@ -97,7 +99,8 @@ class HomeController extends Controller
         $games = DB::table('games')->where('games.state', 'HABILITADO')
                                     ->join('game_genres', 'games.id' , 'game_genres.game_id')
                                     ->join('genres', 'game_genres.genres_id' , 'genres.id')
-                                    ->get(['games.id', 'games.name', 'games.description', 'games.image', 'genres.description as genero']);
+                                    ->select('games.*', 'genres.description as genero')
+                                    ->get();
 
         return view('abm', compact('games'))->with(['message' => 'Se agregó el juego']);
     }
@@ -110,9 +113,46 @@ class HomeController extends Controller
         $games = DB::table('games')->where('games.state', 'HABILITADO')
                                     ->join('game_genres', 'games.id' , 'game_genres.game_id')
                                     ->join('genres', 'game_genres.genres_id' , 'genres.id')
-                                    ->get(['games.id', 'games.name', 'games.description', 'games.image', 'genres.description as genero']);
-
+                                    ->select('games.*', 'genres.description as genero')
+                                    ->get();
+                                    
         return view('abm', compact('games'))->with(['message' => 'Se elimino el juego']);
+    }
+
+    public function editGame(Request $request)
+    {
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $name = $file->getClientOriginalName();
+            $file->move(public_path() . '/images/' , $name);
+        }
+
+        $game = Game::find($request->input('id'));
+        $game->name = $request->input('name');
+        $game->description = $request->input('description');
+        $game->state = 'HABILITADO';
+        $game->percentaje_rent = $request->input('percentaje');
+        $game->amount = $request->input('amount');
+        $game->reward_cooler_coins = $request->input('rewards');
+        if ($request->hasFile('image')) {
+        $game->image = $request->file('image')->getClientOriginalName();
+        }
+        $game->save();
+
+        $genres = Genre::where('description', $request->input('genres'))->first();
+
+        $gameGenre = GameGenre::where('game_id', $request->input('id'))->first();;
+        $gameGenre->genres_id = $genres->id;
+        $gameGenre->save();
+
+        $games = DB::table('games')->where('games.state', 'HABILITADO')
+                                    ->join('game_genres', 'games.id' , 'game_genres.game_id')
+                                    ->join('genres', 'game_genres.genres_id' , 'genres.id')
+                                    ->select('games.*', 'genres.description as genero')
+                                    ->get();
+                                    
+        return view('abm', compact('games'))->with(['message' => 'Juego modificado exitosamente']);
     }
 
 }
