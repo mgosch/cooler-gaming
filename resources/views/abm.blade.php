@@ -3,6 +3,7 @@
 @section('content')
 
 <link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css">
+<link rel="stylesheet" href="css/car.css" type="text/css">
 
 @if ( session()->has('message') )
     <div class="alert alert-success"> 
@@ -32,18 +33,25 @@
               <thead>
                 <tr>
                 <th>Nombre</th>
-                <th>Descripción</th>
+                <th>Precio</th>
+                <th>% Alquiler</th>
+                <th>$ Alquiler</th>
+                <th>Cooler Coins</th>
               </tr>
               </thead>
               <tbody>
                 @foreach($games as $game)
                   <tr class="odd gradeX">
                     <td>{{$game->name}}</td>
-                    <td>{{$game->description}}</td>
+                    <td>{{$game->amount}}</td>
+                    <td>{{$game->percentaje_rent}}</td>
+                    <td>{{number_format($game->amount * $game->percentaje_rent / 100, 2, ',' , '.')}}</td>
+                    <td>{{$game->reward_cooler_coins}}</td>
                     <td class="no-borders">
                         <a href="{{url('delete-game', [$game->id])}}">
                           <img type="submit" src="/svg/delete.svg" class="icon_delete">
-                        </a>
+                        </a> </td>
+                    <td class="no-borders">
                         <a href="" data-toggle="modal" data-target="#editGame"  data-name="{{$game->name}}" data-description="{{$game->description}}"
                         data-percentaje="{{$game->percentaje_rent}}" data-id="{{$game->id}}" data-amount="{{$game->amount}}" data-rewards="{{$game->reward_cooler_coins}}"
                         data-genero="{{$game->genero}}" data-image="{{$game->image}}"> 
@@ -97,7 +105,7 @@
             <input class="form-control" value="1" type="float" min="1" step="1" name="amount" id="amount" required>
           </div>
           <div class="form-group">
-            <label>Premio</label>
+            <label>Cooler Coins</label>
             <input class="form-control" value="1" type="float" min="1" step="1" name="rewards" id="rewards" required>
           </div>
           <div class="form-group">
@@ -153,7 +161,7 @@
             <input class="form-control" value="1" type="float" min="1" step="1" name="amount" id="amount" required>
           </div>
           <div class="form-group">
-            <label>Premio</label>
+            <label>Cooler Coins</label>
             <input class="form-control" value="1" type="float" min="1" step="1" name="rewards" id="rewards" required>
           </div>
           <div class="form-group">

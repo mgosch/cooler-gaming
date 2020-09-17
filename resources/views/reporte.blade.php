@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+<link rel="stylesheet" href="css/reporte.css" type="text/css">
+
 <div class="wrapper">
   <div class="container">
       <div class="col-lg-12">
@@ -17,7 +20,7 @@
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
               <thead>
                 <tr>
-                <th>Juego</th>
+                <th class="header-juego-usuario">Juego</th>
                 <th>Cantidad de Alquileres</th>
                 <th>Horas alquiladas</th>
               </tr>
@@ -51,7 +54,7 @@
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
               <thead>
                 <tr>
-                <th>Usuario</th>
+                <th class="header-juego-usuario">Usuario</th>
                 <th>Cantidad de Alquileres</th>
                 <th>Horas alquiladas</th>
               </tr>
