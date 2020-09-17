@@ -35,8 +35,10 @@
           <div class="row justify-content-left">
             <div class="col-md-7 site-section-heading text-center pt-4" style="display: inline-flex;">
               <h2>Comentarios</h2>
+              @if(\App\Rental::where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->where('game_id', $detalle->id)->first())
               <p><a href="" class="btn btn-success" data-toggle="modal" data-target="#myComment" data-id="{{$detalle->id}}" style="right: 0;
     position: absolute;">Agregar comentario</a></p>
+              @endif
             </div>
           </div>
           <br>

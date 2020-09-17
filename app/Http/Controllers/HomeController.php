@@ -66,6 +66,7 @@ class HomeController extends Controller
                                     ->join('game_genres', 'games.id' , 'game_genres.game_id')
                                     ->join('genres', 'game_genres.genres_id' , 'genres.id')
                                     ->select('games.*', 'genres.description as genero')
+                                    ->orderBy('games.name', 'asc')
                                     ->get();
         return view('abm', compact('games'));
     }
@@ -143,11 +144,13 @@ class HomeController extends Controller
                         ->select('games.name as name', DB::raw('count(*) as rental_count'), DB::raw('SUM(rentals.time_rent) as total_rent'))
                         ->groupBy('games.name')
                         ->orderByDesc('rental_count')
+                        ->orderByDesc('total_rent')
                         ->get();
         $gamers = User::rightJoin('rentals', 'user_id', '=', 'users.id')
                         ->select('users.name as name', DB::raw('count(*) as rental_count'), DB::raw('SUM(rentals.time_rent) as total_rent'))
                         ->groupBy('users.name')
                         ->orderByDesc('rental_count')
+                        ->orderByDesc('total_rent')
                         ->get();
         return view('reporte', compact('rentals', 'gamers'));
     }
