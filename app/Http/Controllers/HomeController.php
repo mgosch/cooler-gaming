@@ -9,6 +9,7 @@ use App\Comment;
 use App\Genre;
 use App\GameGenre;
 use App\Rental;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -151,8 +152,22 @@ class HomeController extends Controller
                                     ->join('genres', 'game_genres.genres_id' , 'genres.id')
                                     ->select('games.*', 'genres.description as genero')
                                     ->get();
-                                    
+
         return view('abm', compact('games'))->with(['message' => 'Juego modificado exitosamente']);
+    }
+
+    public function getRentals() {
+        $rentals = Game::rightJoin('rentals', 'game_id', '=', 'games.id')
+                        ->select('games.name as name', DB::raw('count(*) as rental_count'), DB::raw('SUM(rentals.time_rent) as total_rent'))
+                        ->groupBy('games.name')
+                        ->orderByDesc('rental_count')
+                        ->get();
+        $gamers = User::rightJoin('rentals', 'user_id', '=', 'users.id')
+                        ->select('users.name as name', DB::raw('count(*) as rental_count'), DB::raw('SUM(rentals.time_rent) as total_rent'))
+                        ->groupBy('users.name')
+                        ->orderByDesc('rental_count')
+                        ->get();
+        return view('reporte', compact('rentals', 'gamers'));
     }
 
 }

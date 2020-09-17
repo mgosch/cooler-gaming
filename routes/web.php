@@ -65,8 +65,6 @@ Route::middleware(['auth'])->group(function () {
 
      Route::get('/abm','HomeController@getGames');
 
-     Route::get('/reporte', function () {
-        return view('reporte');
-    });
+     Route::get('/reporte','HomeController@getRentals');
      
  });
