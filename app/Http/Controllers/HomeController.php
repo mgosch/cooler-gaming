@@ -97,27 +97,15 @@ class HomeController extends Controller
         $gameGenre->genres_id = $genres->id;
         $gameGenre->save();
 
-        $games = DB::table('games')->where('games.state', 'HABILITADO')
-                                    ->join('game_genres', 'games.id' , 'game_genres.game_id')
-                                    ->join('genres', 'game_genres.genres_id' , 'genres.id')
-                                    ->select('games.*', 'genres.description as genero')
-                                    ->get();
-
-        return view('abm', compact('games'))->with(['message' => 'Se agregó el juego']);
+        return redirect('abm')->with(['message' => 'Se agrego el juego exitosamente']);
     }
 
     public function deleteGame($id) {
         $game = Game::find($id);
         $game->state = 'BAJA';
         $game->save();
-
-        $games = DB::table('games')->where('games.state', 'HABILITADO')
-                                    ->join('game_genres', 'games.id' , 'game_genres.game_id')
-                                    ->join('genres', 'game_genres.genres_id' , 'genres.id')
-                                    ->select('games.*', 'genres.description as genero')
-                                    ->get();
                                     
-        return view('abm', compact('games'))->with(['message' => 'Se elimino el juego']);
+        return redirect('abm')->with(['message' => 'Se elimino el juego']);
     }
 
     public function editGame(Request $request)
@@ -147,13 +135,7 @@ class HomeController extends Controller
         $gameGenre->genres_id = $genres->id;
         $gameGenre->save();
 
-        $games = DB::table('games')->where('games.state', 'HABILITADO')
-                                    ->join('game_genres', 'games.id' , 'game_genres.game_id')
-                                    ->join('genres', 'game_genres.genres_id' , 'genres.id')
-                                    ->select('games.*', 'genres.description as genero')
-                                    ->get();
-
-        return view('abm', compact('games'))->with(['message' => 'Juego modificado exitosamente']);
+        return redirect('abm')->with(['message' => 'Se modifico el juego']);
     }
 
     public function getRentals() {
