@@ -43,9 +43,6 @@
                         <li class="nav-item" style="margin-right: 20px;">
                                 <a class="nav-link" href="{{url('acerca')}}">{{ __('Nosotros') }}</a>
                         </li>
-                        <li class="nav-item" style="margin-right: 20px;">
-                            <a class="nav-link" href="{{ url('/home') }}">Tienda</a>
-                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
@@ -64,6 +61,9 @@
                                     <a class="nav-link" href="{{url('reporte')}}">{{ __('Reporte') }}</a>
                             </li>
                             @else
+                            <li class="nav-item" style="margin-right: 20px;">
+                                <a class="nav-link" href="{{ url('/home') }}">Tienda</a>
+                            </li>
                             <li class="dropdown">
                                 <img src="/svg/cart.svg" class="icon_carrito" data-toggle="dropdown">
                                 </a>
