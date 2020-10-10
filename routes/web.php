@@ -66,5 +66,9 @@ Route::middleware(['auth'])->group(function () {
      Route::get('/abm','HomeController@getGames');
 
      Route::get('/reporte','HomeController@getRentals');
+
+     Route::get('games-list-excel','HomeController@exportGameExcel')->name('games.excel');
+
+     Route::get('users-list-excel','HomeController@exportUserExcel')->name('users.excel');
      
  });

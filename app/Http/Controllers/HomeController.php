@@ -10,6 +10,9 @@ use App\Genre;
 use App\GameGenre;
 use App\Rental;
 use App\User;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\GameExport;
+use App\Exports\UserExport;
 
 class HomeController extends Controller
 {
@@ -153,6 +156,15 @@ class HomeController extends Controller
                         ->orderByDesc('total_rent')
                         ->get();
         return view('reporte', compact('rentals', 'gamers'));
+    }
+
+
+    public function exportGameExcel() {
+        return Excel::download(new GameExport, 'top_de_juegos.xls');
+    }
+
+    public function exportUserExcel() {
+        return Excel::download(new UserExport, 'top_de_usuarios.xls');
     }
 
 }

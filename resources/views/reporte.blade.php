@@ -6,8 +6,11 @@
 
 <div class="wrapper">
   <div class="container">
-      <div class="col-lg-12">
+      <div class="col-lg-12 titulo">
         <h1 class="page-header">Top de juegos</h1>
+        <a href="{{route('games.excel')}}"  class="icon_down">
+            <img type="submit" src="/svg/down.svg">
+        </a>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -40,8 +43,11 @@
         </div>
         <!-- /.panel -->
       </div>
-      <div class="col-lg-12">
+      <div class="col-lg-12 titulo">
         <h1 class="page-header">Top de usuarios</h1>
+        <a href="{{route('users.excel')}}" class="icon_down">
+            <img type="submit" src="/svg/down.svg">
+        </a>
       </div>
       <!-- /.col-lg-12 -->
     </div>

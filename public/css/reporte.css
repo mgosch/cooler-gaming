@@ -1,3 +1,13 @@
 .header-juego-usuario {
     width: 30%;
 }
+
+.titulo {
+    display: flex;
+}
+
+.icon_down {
+    right: 25px;
+    position: absolute;
+    margin-top: 10px;
+}
