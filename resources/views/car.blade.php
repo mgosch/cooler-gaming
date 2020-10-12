@@ -67,9 +67,9 @@
               </tr>
               </tbody>
             </table>
+              <a href="{{url('home')}}" class="btn btn-default">Cancelar</a>
               <a href="" class="btn btn-success" data-toggle="modal" data-target="#modalPago" data-coins="{{number_format($coins,2, ',' , '.')}}" data-total="{{number_format($car->getTotal(),2, ',' , '.')}}" data-rewars="{{number_format($car->getNewCoins(),2, ',' , '.')}}"
               data-diferencia="{{number_format($car->getDif(),2, ',' , '.')}}">Alquilar</a>
-              <a href="{{url('home')}}" class="btn btn-success">Cancelar</a>
             @else
               <i>Ningun producto agregado</i>
             @endif
@@ -145,7 +145,7 @@
           </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-success">Pagar</button>
           </div>
         </div>

@@ -123,7 +123,7 @@
             <input name="image" id="image" type="file" required>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-success">Alta</button>
           </div>
          </div>
@@ -179,7 +179,7 @@
             <input name="image" id="image" type="file">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-success">Modificar</button>
           </div>
          </div>
