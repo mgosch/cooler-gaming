@@ -4,11 +4,18 @@ namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Illuminate\Support\Facades\DB;
 use App\Game;
 
-class GameExport implements FromCollection, WithHeadings
+class GameExport implements FromCollection, WithHeadings, WithTitle, ShouldAutoSize
 {
+
+    public function title(): string
+    {
+        return 'Top de juegos';
+    }
 
     public function headings():array
     {

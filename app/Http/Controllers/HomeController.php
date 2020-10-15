@@ -160,11 +160,13 @@ class HomeController extends Controller
 
 
     public function exportGameExcel() {
-        return Excel::download(new GameExport, 'top_de_juegos.xls');
+        $name = 'Top de juegos ' . now() . '.xls';
+        return Excel::download(new GameExport, $name);
     }
 
     public function exportUserExcel() {
-        return Excel::download(new UserExport, 'top_de_usuarios.xls');
+        $name = 'Top de usuarios ' . now() . '.xls';
+        return Excel::download(new UserExport, $name);
     }
 
 }

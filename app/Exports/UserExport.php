@@ -6,9 +6,16 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class UserExport implements FromCollection, WithHeadings
+class UserExport implements FromCollection, WithHeadings, WithTitle, ShouldAutoSize
 {
+
+    public function title(): string
+    {
+        return 'Top de usuarios';
+    }
 
     public function headings():array
     {
